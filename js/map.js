@@ -28,7 +28,7 @@ var mapOptions = {
 var map = L.map('map', mapOptions);
 
 //Feature layer with marker clustering
-var fLayerOpts = layerOptions: {
+var fLayerOpts = {
 	name: 'Name of the Feature layer',
 	spiderfyOnMaxZoom: true,    // default true
 	showCoverageOnHover: true,     // default true
@@ -57,10 +57,15 @@ var featureLayer = L.markerClusterGroup(fLayerOpts);
 featureLayer.addTo(map);
 
 
-var featureOptions = {};
+var featureOptions = {
+	
+};
 var oneFeature = {
+	type: "Feature",
 	properties: {
-		name = "First Feature"
+		name: "First Feature",
+		alt: "",
+		title: ""
 	},
 	geometry: {
 		type: "Point",
@@ -69,10 +74,13 @@ var oneFeature = {
 	},
 	style: {
 		icon: {
-			iconUrl: 'img/icon.png',
+			iconUrl: 'img/map-marker-icon.png',
 			iconSize: [18, 18],
 			iconAnchor: [9, 9]
 		}
+	},
+	options: {
+		
 	}
 };
 var feature = L.geoJson.css(oneFeature, featureOptions);
