@@ -11,8 +11,8 @@ var baselayer = L.tileLayer("http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/
 
 //Map options
 var mapOptions = {
-	"center": [-1, 53],
-	"zoom": 15,
+	"center": [53, -1],
+	"zoom": 13,
 	"minZoom": 0,
 	"maxZoom": 22,
 	"zoomControl": true,
@@ -35,7 +35,7 @@ var fLayerOpts = {
 	zoomToBoundsOnClick: true,     // default true
 	removeOutsideVisibleBounds: true,   // true for enhanced performance
 	animateAddingMarkers: true,    // default true
-	disableClusteringAtZoom: 11,    // default disabled
+	disableClusteringAtZoom: 12,    // default disabled
 	maxClusterRadius: 100, // Default 80
 	spiderfyDistanceMultiplier: 100, // default 1
 	polygonOptions: {
@@ -83,9 +83,31 @@ var oneFeature = {
 		
 	}
 };
+var otherFeature = {
+	type: "Feature",
+	properties: {
+		name: "First Feature",
+		alt: "",
+		title: ""
+	},
+	geometry: {
+		type: "Point",
+		crs: 4326,
+		coordinates: [-1.01, 53.01]
+	},
+	style: {
+		icon: {
+			iconUrl: 'img/map-marker-icon.png',
+			iconSize: [18, 18],
+			iconAnchor: [9, 9]
+		}
+	},
+	options: {
+		
+	}
+};
 var feature = L.geoJson.css(oneFeature, featureOptions);
-
 feature.addTo(featureLayer);
 
-
-
+feature = L.geoJson.css(otherFeature, featureOptions);
+feature.addTo(featureLayer);
